@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-ink-600;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-ink-900 text-bone-100 font-sans antialiased;
+    background-image: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(217, 171, 95, 0.08), transparent);
+  }
+
+  ::selection {
+    background: rgba(217, 171, 95, 0.28);
+    color: #f6f5f2;
+  }
+
+  :focus-visible {
+    outline: 2px solid #d9ab5f;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0b0b0d;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #26262b;
+    border-radius: 8px;
+    border: 2px solid #0b0b0d;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3a3a41;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer components {
+  .container-shell {
+    @apply mx-auto w-full max-w-[1240px] px-6 sm:px-8 lg:px-12;
+  }
+
+  .section-pad {
+    @apply py-24 md:py-32;
+  }
+
+  .eyebrow {
+    @apply text-sm text-brass-400 font-medium;
+  }
+
+  .grain-overlay {
+    @apply pointer-events-none fixed inset-0 z-[2] bg-grain opacity-[0.035] mix-blend-overlay;
+  }
+
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-full bg-bone-100 px-7 py-3.5 text-[0.95rem] font-medium text-ink-950 transition-transform duration-300 ease-out will-change-transform hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply relative inline-flex items-center justify-center gap-2 rounded-full border border-ink-500 bg-transparent px-7 py-3.5 text-[0.95rem] font-medium text-bone-100 transition-all duration-300 ease-out hover:border-brass-400 hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .link-underline {
+    @apply relative;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 0.35s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+
+  /* Shared "premium container" treatment — the same subtle depth,
+     gold-tinted border, and ambient glow used on every major card
+     across the site (about, skills, contact, certifications, project
+     previews) so hover states read as one consistent system. */
+  .card-premium {
+    @apply relative rounded-2xl border border-ink-700 bg-ink-850/60 transition-all duration-300 ease-out;
+  }
+  .card-premium:hover {
+    @apply -translate-y-1 border-brass-500/40;
+    box-shadow: 0 25px 60px -15px rgba(217, 171, 95, 0.25);
+  }
+
+  /* Same border/glow treatment without the vertical lift — for
+     containers a user interacts inside of (like the contact form),
+     where a shifting position while typing would feel wrong. */
+  .card-premium-static {
+    @apply relative rounded-2xl border border-ink-700 bg-ink-850/60 transition-colors duration-300 ease-out;
+  }
+  .card-premium-static:focus-within,
+  .card-premium-static:hover {
+    @apply border-brass-500/40;
+    box-shadow: 0 25px 60px -15px rgba(217, 171, 95, 0.2);
+  }
+
+  /* Soft blurred radial glow, meant to sit behind a container and
+     blend into the black background rather than read as a neon
+     outline. Kept very subtle at rest, slightly stronger on hover
+     via the consumer's own group-hover utility. */
+  .ambient-glow {
+    @apply pointer-events-none absolute rounded-full blur-[90px] transition-opacity duration-500;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
