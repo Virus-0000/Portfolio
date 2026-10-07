@@ -4,7 +4,7 @@ My personal developer portfolio built with **React, Vite, Tailwind CSS, and Fram
 
 ## 🌐 Live Portfolio
 
-[View Portfolio](https://portfolio-a9lztfueq-virus-0000s-projects.vercel.app)
+[View Portfolio](https://portfolio-kappa-brown-v0x6efcjn.vercel.app)
 
 ## 🛠️ Built With
 
